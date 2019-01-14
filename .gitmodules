@@ -1,0 +1,9 @@
+[submodule "g3log"]
+	path = g3log
+	url = https://github.com/KjellKod/g3log
+[submodule "pybind11"]
+	path = pybind11
+	url = https://github.com/pybind/pybind11
+[submodule "g3sinks"]
+	path = g3sinks
+	url = https://github.com/KjellKod/g3sinks
