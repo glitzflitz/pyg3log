@@ -142,8 +142,8 @@ clean: CMakeFiles/g3logrotate.dir/clean
 # Target rules for target CMakeFiles/UnitTestRunner.dir
 
 # All Build rule for target.
-CMakeFiles/UnitTestRunner.dir/all: CMakeFiles/g3logrotate.dir/all
 CMakeFiles/UnitTestRunner.dir/all: CMakeFiles/gtest_170_lib.dir/all
+CMakeFiles/UnitTestRunner.dir/all: CMakeFiles/g3logrotate.dir/all
 	$(MAKE) -f CMakeFiles/UnitTestRunner.dir/build.make CMakeFiles/UnitTestRunner.dir/depend
 	$(MAKE) -f CMakeFiles/UnitTestRunner.dir/build.make CMakeFiles/UnitTestRunner.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/direwolf/Projects/pyg3log/g3sinks/logrotate/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target UnitTestRunner"

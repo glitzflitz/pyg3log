@@ -26,7 +26,7 @@ struct ConsoleLogSink {
   }
 };
 
-// in main.cpp, main() function
+
 
 
 

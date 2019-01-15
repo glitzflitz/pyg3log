@@ -6,8 +6,6 @@ import sysconfig
 from setuptools import setup
 from setuptools.extension import Extension
 
-
-
 class get_pybind_include(object):
     def __init__(self, user=False):
         self.user = user
@@ -29,29 +27,29 @@ def include_dir_files(folder):
 
 
 setup(
-    name='pyG3log',
-    version='1.0.4',
+    name='pyg3log',
+    version='1.0.0',
     author='Amey Narkhede',
-    author_email='ameynarkhede03.com',
-    description='python wrapper around C++ spdlog logging library (https://github.com/bodgergely/pyspdlog)',
+    author_email='ameynarkhede02.com',
+    description='python wrapper around C++ g3log logging library https://github.com/KjellKod/g3log',
     license='Unlicensed',
-    long_description='python wrapper (https://github.com/KjellKod/g3log) around C++ G3log (https://github.com/KjellKod/g3log) logging library.',
-    setup_requires=['pytest-runner'],
+    long_description='python wrapper (https://github.com/GreyDireWolf/pyg3log) around C++ G3log (https://github.com/KjellKod/g3log) logging library along with partial sink support (https://github.com/KjellKod/g3sinks).',
+    #setup_requires=['pytest-runner'],
     install_requires=['pybind11>=2.2'],
-    tests_require=['pytest'],
+    #tests_require=['pytest'],
     data_files=include_dir_files('pyg3log'),
     ext_modules=[
         Extension(
             'pyg3log',
             ['src/pyg3log.cpp'],
             include_dirs=[
-                'g3log/include/',
                 get_pybind_include(),
-                get_pybind_include(user=True)
+                get_pybind_include(user=True),
+                '/usr/local/lib',
             ],
-            libraries=['stdc++'],
-            extra_compile_args=["-std=c++11", "-v"],
-            language='c++11'
+            libraries=['stdc++','g3logger','g3logrotate'],
+            extra_compile_args=["-std=c++14", "-v","-fPIC"],
+            language='c++14',
         )
     ],
     zip_safe=False,

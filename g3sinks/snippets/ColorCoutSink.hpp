@@ -27,7 +27,7 @@ struct ColorCoutSink {
 };
 
 
- Example usage
+/* Example usage
 #include <g3log/g3log.hpp>
 #include <g3log/logworker.hpp>
 
@@ -36,9 +36,7 @@ int main() {
    std::unique_ptr<LogWorker> logworker {LogWorker::createLogWorker()};
    auto sinkHandle = logworker->addSink(std::make_unique<CustomSink>(),
                                      &CustomSink::ReceiveLogMessage);
-	//auto handle= worker->addDefaultLogger(argv[0], );
-   g3::initializeLogging(worker.get());
-   	
-}
 
+ ... continuation
+*/
 

@@ -1,9 +1,5 @@
 /*cppimport
-<%
-setup_pybind11(cfg)
-cfg['compiler_args'] = ['-std=c++14','-fPIC']
 
-%>
 */
 #include <pybind11/complex.h>
 #include <pybind11/embed.h>
@@ -20,11 +16,7 @@ cfg['compiler_args'] = ['-std=c++14','-fPIC']
 #include "ConsoleLogSink.h"
 #include "g3sinks/LogRotate.h"
 
-#define PYLOG(LEVEL)                                                         \
-    std::stringstream out;                                                   \
-    using expander = int[];                                                  \
-    (void)expander{0, (void(out << ' ' << std::forward<py::args>(arg)), 0)}; \
-    LOG(LEVEL) << out.str();
+#define PYLOG(LEVEL)                                                             std::stringstream out;                                                       using expander = int[];                                                      (void)expander{0, (void(out << ' ' << std::forward<py::args>(arg)), 0)};     LOG(LEVEL) << out.str();
 
 //static auto worker = g3::LogWorker::createLogWorker();
 
