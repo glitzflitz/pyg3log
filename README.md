@@ -17,10 +17,8 @@ python setup.py install
 ```
 ## Usage
 ```
-import pyg3log as log
-#Create log worker for displaying log messages on terminal/console
-log.createConsoleLogWorker()
 >>> import pyg3log as log
+>>> #Create log worker for displaying log messages on terminal/console
 >>> log.createConsoleLogWorker()
 >>> log.info("Some information", "random amount of parameters")
     2019/01/20 23:42:30 058417	INFO [pyg3log.cpp->operator():81]
@@ -33,3 +31,4 @@ log.createConsoleLogWorker()
 >>> log.warning("WARNING",2355,34.54)
 >>> logArchive = log.LogRotate("archiveName", "/tmp ")
 >>> logArchive.save()
+```
