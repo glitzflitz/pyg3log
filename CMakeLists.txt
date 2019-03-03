@@ -1,31 +1,59 @@
-CMAKE_MINIMUM_REQUIRED( VERSION 3.3.0 )
+# ==================================================================================================
+# CMake
+# ==================================================================================================
+cmake_minimum_required(VERSION 3.3.0)
+
+# ==================================================================================================
+# Project declaration
+# ==================================================================================================
 project(pyg3log)
 
-SET( CMAKE_CXX_STANDARD 14 )
-SET( CMAKE_CXX_STANDARD_REQUIRED ON )
-set(PYBIND11_CPP_STANDARD -std=c++14)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+# ==================================================================================================
+#  Paths
+# ==================================================================================================
+
+# Where our libraries are
+set(LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
+# ==================================================================================================
+# General compiler flags
+# ==================================================================================================
+set(CXX_STANDARD "-std=c++14")
+if (WIN32)
+    set(CXX_STANDARD "/std:c++14")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_STANDARD} ")
 
 
-FIND_PACKAGE( pybind11 REQUIRED )
-FIND_PACKAGE( g3logger REQUIRED )
-FIND_PACKAGE( g3logrotate REQUIRED)
+if (WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_USE_MATH_DEFINES=1")
+endif()
+
+# Add colors to ninja builds
+if (UNIX AND CMAKE_GENERATOR STREQUAL "Ninja")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fcolor-diagnostics")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
+endif()
+
+# ==================================================================================================
+# Linker flags
+# ==================================================================================================
+# Strip unused sections
+set(GC_SECTIONS "-Wl,--gc-sections")
+set(B_SYMBOLIC_FUNCTIONS "-Wl,-Bsymbolic-functions")
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GC_SECTIONS}")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${GC_SECTIONS} ${B_SYMBOLIC_FUNCTIONS}")
+
+# Common to all platforms
+
+add_subdirectory(${LIBRARIES}/pybind11)
 
 FIND_PACKAGE(PythonInterp 3)
 FIND_PACKAGE(PythonLibs   3)
 
-IF( PYTHONINTERP_FOUND AND PYTHONLIBS_FOUND AND PYBIND11_FOUND )
-  INCLUDE_DIRECTORIES(
-    ${PYTHON_INCLUDE_DIRS}
-    ${PYBIND11_INCLUDE_DIRS}
-  )
-ENDIF()
-#ADD_LIBRARY( pyg3log SHARED src/pyg3log.cpp)
 pybind11_add_module(pyg3log MODULE src/pyg3log.cpp)
-#SET_TARGET_PROPERTIES( pyg3log
-#    PROPERTIES
-#      PREFIX ""
-#      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/pyg3log"
-#  )
-#TARGET_LINK_LIBRARIES( pyg3log, "/usr/lib/libg3logrotate.so")
-
-
+target_link_libraries( pyg3log PRIVATE g3logger )
+target_link_libraries( pyg3log PRIVATE g3logrotate )

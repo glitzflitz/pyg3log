@@ -7,3 +7,12 @@
 [submodule "g3sinks"]
 	path = g3sinks
 	url = https://github.com/KjellKod/g3sinks
+[submodule "libs/g3log"]
+	path = libs/g3log
+	url = https://github.com/KjellKod/g3log
+[submodule "libs/g3sinks"]
+	path = libs/g3sinks
+	url = https://github.com/KjellKod/g3sinks.git
+[submodule "libs/pybind11"]
+	path = libs/pybind11
+	url = https://github.com/pybind/pybind11.git

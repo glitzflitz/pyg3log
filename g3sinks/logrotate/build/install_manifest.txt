@@ -1,6 +1,0 @@
-/usr/local/lib/libg3logrotate.so.1.1.0-138
-/usr/local/lib/libg3logrotate.so
-/usr/local/include/g3sinks/LogRotate.h
-/usr/local/include/g3sinks/LogRotateUtility.h
-/usr/local/include/g3sinks/LogRotateWithFilter.h
-/usr/local/lib/cmake/g3sinks/g3logrotateConfig.cmake
