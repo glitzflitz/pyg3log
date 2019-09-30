@@ -5,16 +5,15 @@ Python wrapper for G3Log a C++ logging library
 pyg3log is python wraapper around [G3log](https://github.com/KjellKod/g3log) an asynchronous, "crash safe" C++ logging library.
 
 ## Installation
-```pip install pybind11```
+First make sure [g3log](https://github.com/KjellKod/g3log) and [g3sinks](github.com/KjellKod/g3sinks) are installed
 
-```pip install pyg3log```
 # From github:
 ```
 git clone https://github.com/GreyDireWolf/pyg3log.git
 cd pyg3log
-git submodule update --init --recursive
 python setup.py install
 ```
+
 ## Usage
 ```
 >>> import pyg3log as log
@@ -27,8 +26,15 @@ python setup.py install
     2019/01/20 23:40:33 312192	DEBUG [pyg3log.cpp->operator():78]
     ('Hello World', 123, 656.736)
 >>> log.closeLogWorker()
->>> log.createDefaultLogWorker("pyg3log", "/tmp") #OR just log.createDeafultLogWorker()
+>>> log.createDefaultLogWorker("pyg3log", "/tmp") #OR just log.createDeafultLogWorker() which stores logs in /tmp
 >>> log.warning("WARNING",2355,34.54)
 >>> logArchive = log.LogRotate("archiveName", "/tmp ")
 >>> logArchive.save()
 ```
+
+### TODO
+
+- [x] Add support for Console logger sink
+- [ ] Find better way for packaging and distributing
+- [ ] Add support for more sinks
+

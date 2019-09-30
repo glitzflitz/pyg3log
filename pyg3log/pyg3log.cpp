@@ -34,8 +34,6 @@ namespace py = pybind11;
 //Find better way to wrap custom sinks with templates
 void createConsoleLogWorker()
 {
-  
- 
     static auto worker = g3::LogWorker::createLogWorker();
 
     static auto handle = worker->addSink(std::make_unique<ConsoleLogSink>(),
@@ -46,7 +44,6 @@ void createConsoleLogWorker()
 void createDefaultLogWorker(std::string log_prefix, std::string path_to_log_file)
 {
 
-
     static auto worker = g3::LogWorker::createLogWorker();
 
     static auto handle = worker->addDefaultLogger(log_prefix, path_to_log_file);
@@ -55,18 +52,17 @@ void createDefaultLogWorker(std::string log_prefix, std::string path_to_log_file
 
 PYBIND11_MODULE(pyg3log, m)
 {
-	py::class_<LogRotate>(m,"LogRotate")
-    .def(py::init<const std::string&, const std::string&>())
-	.def("save", &LogRotate::save)
-	.def("changeLogFile",&LogRotate::changeLogFile)
-	.def("logFileName",&LogRotate::logFileName)
-	.def("setMaxArchiveLogCount",&LogRotate::setMaxArchiveLogCount)
-	.def("getMaxArchiveLogCount",&LogRotate::getMaxArchiveLogCount)
-	.def("setFlushPolicy",&LogRotate::setFlushPolicy)
-	.def("flush",&LogRotate::flush)
-	.def("setMaxLogSize",&LogRotate::setMaxLogSize)
-	.def("getMaxLogSize",&LogRotate::getMaxLogSize);
-
+    py::class_<LogRotate>(m, "LogRotate")
+        .def(py::init<const std::string&, const std::string&>())
+        .def("save", &LogRotate::save)
+        .def("changeLogFile", &LogRotate::changeLogFile)
+        .def("logFileName", &LogRotate::logFileName)
+        .def("setMaxArchiveLogCount", &LogRotate::setMaxArchiveLogCount)
+        .def("getMaxArchiveLogCount", &LogRotate::getMaxArchiveLogCount)
+        .def("setFlushPolicy", &LogRotate::setFlushPolicy)
+        .def("flush", &LogRotate::flush)
+        .def("setMaxLogSize", &LogRotate::setMaxLogSize)
+        .def("getMaxLogSize", &LogRotate::getMaxLogSize);
 
     m.def("createDefaultLogWorker", &createDefaultLogWorker, "Creates a new log worker and default handle", py::arg("log_prefix") = "g3log", py::arg("path_to_log_file") = "/tmp");
     m.def("createConsoleLogWorker", &createConsoleLogWorker, "Create a new log worker to display log on console");
