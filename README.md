@@ -7,7 +7,7 @@ pyg3log is python wraapper around [G3log](https://github.com/KjellKod/g3log) an 
 ## Installation
 First make sure [g3log](https://github.com/KjellKod/g3log) and [g3sinks](github.com/KjellKod/g3sinks) are installed
 
-# From github:
+### From github:
 ```
 git clone https://github.com/GreyDireWolf/pyg3log.git
 cd pyg3log
