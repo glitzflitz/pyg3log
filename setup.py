@@ -33,7 +33,7 @@ setup(
     author='Amey Narkhede',
     author_email='ameynarkhede02.com',
     description='python wrapper around C++ g3log logging library https://github.com/KjellKod/g3log',
-    license='Unlicensed',
+    license='Unlicense',
     long_description='python wrapper (https://github.com/GreyDireWolf/pyg3log) around C++ G3log (https://github.com/KjellKod/g3log) logging library along with partial sink support (https://github.com/KjellKod/g3sinks).',
     install_requires=['pybind11>=2.2'],
     data_files=include_dir_files('pyg3log'),
