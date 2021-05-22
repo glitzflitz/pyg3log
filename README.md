@@ -2,14 +2,14 @@
 Python wrapper for G3Log a C++ logging library
 
 ## Introduction 
-pyg3log is python wraapper around [G3log](https://github.com/KjellKod/g3log) an asynchronous, "crash safe" C++ logging library.
+pyg3log is python wrapper around [G3log](https://github.com/KjellKod/g3log) an asynchronous, "crash safe" C++ logging library.
 
 ## Installation
 First make sure [g3log](https://github.com/KjellKod/g3log) and [g3sinks](github.com/KjellKod/g3sinks) are installed
 
 ### From github:
 ```
-git clone https://github.com/GreyDireWolf/pyg3log.git
+git clone https://github.com/glitzflitz/pyg3log.git
 cd pyg3log
 python setup.py install
 ```
